@@ -6,13 +6,11 @@
 	<h1>Login</h1>
 
 	{% if form.errors %}
-	<p>
-	Your username and password didn't match.
-	Please try again.
-	</p>
+		<p>Your username and password didn't match. Please try again.</p>
 
 	{% else %}
-		<p>Please, use the following form to Enter:</p>
+		<p>Please, use the following form to Login:</p> If you don't have an account
+		<a href="{% url "register" %}">register here</a></p>
 	{% endif %}
 
 <div class="login-form">

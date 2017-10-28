@@ -8,6 +8,10 @@ urlpatterns = [
     # login / logout urls
     url(r'^$', views.dashboard, name='dashboard'),
 
+    url(r'^register/$', views.register, name='register'),
+
+    url(r'^edit/$', views.edit, name='edit'),
+
     url(r'^login/$', auth_views.login, name='login'),
 
     url(r'^logout/$', auth_views.logout, name='logout'),
@@ -34,7 +38,5 @@ urlpatterns = [
 
     url(r'^password-reset/complete/$', auth_views.password_reset_complete,
     name='password_reset_complete'),
-
-    url(r'^register/$', views.register, name='register'),
 
 ]
