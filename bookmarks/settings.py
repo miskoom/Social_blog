@@ -26,7 +26,9 @@ SECRET_KEY = 'p1x7)i!^0fdsc_@nji=uyg&+@^ma$ux87o7uj76c8fnq8)zny_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+                'mysite.com',
+]
 
 
 # Application definition
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'django.contrib.admin',
+    'social_django',
+    'images',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -51,6 +55,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'bookmarks.urls'
@@ -68,6 +74,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -136,3 +145,24 @@ LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+
+        'social_core.backends.google.GoogleOAuth2',
+        'social_core.backends.twitter.TwitterOAuth',
+        'social_core.backends.facebook.FacebookOAuth2',
+
+        'django.contrib.auth.backends.ModelBackend',
+        'account.authentication.EmailAuthBackend',
+)
+#FACEBOOK
+SOCIAL_AUTH_FACEBOOK_KEY = '1655216054592959'      # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '0b3b7be3c3ca8cfea3524626acb4c9ed'   # Facebook App Secret
+
+#TWITTER
+SOCIAL_AUTH_TWITTER_KEY = '8TKYg4cjVuVH0pwXABDREwNkg'
+SOCIAL_AUTH_TWITTER_SECRET = 'FEnceIsPgXzjajdME5R5MkGSa3staNAvW8WxvROYkt717ltcDI'
+
+#gplus
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '452927744039-vsjcegdvi4ri40p5pa5qon6t90smjsqg.apps.googleusercontent.com '
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'nY2a8vfVSlN4keB5M6Z1fqcb '
