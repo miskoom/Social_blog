@@ -25,6 +25,7 @@ SECRET_KEY = 'p1x7)i!^0fdsc_@nji=uyg&+@^ma$ux87o7uj76c8fnq8)zny_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = 'DEBUG'
 
 ALLOWED_HOSTS = [
                 'mysite.com',
@@ -167,3 +168,7 @@ SOCIAL_AUTH_TWITTER_SECRET = 'FEnceIsPgXzjajdME5R5MkGSa3staNAvW8WxvROYkt717ltcDI
 #gplus
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '452927744039-vsjcegdvi4ri40p5pa5qon6t90smjsqg.apps.googleusercontent.com '
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'nY2a8vfVSlN4keB5M6Z1fqcb '
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
