@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^account/', include('account.urls')),
     url(r'^images/', include('images.urls', namespace='images')),
+    url(r'^search/', include('haystack.urls', namespace='haystack')),
 ]
 
 if settings.DEBUG:

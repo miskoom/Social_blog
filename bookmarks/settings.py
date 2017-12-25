@@ -41,11 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
     'django.contrib.admin',
+    # 3rd party apps
     'social_django',
-    'images',
     'sorl.thumbnail',
+    'haystack',
+    # my apps
+    'account',
+    'images',
+    'actions',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -171,4 +175,12 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'nY2a8vfVSlN4keB5M6Z1fqcb '
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
+
+# Haystack connection
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr'
+    },
 }
